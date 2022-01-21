@@ -42,7 +42,8 @@ function App() {
             setButtonColor('warning');
             setButtonText(':-|');
         } else if (numHazards >= 2) {
-            setMessages('Bummer!  ba-bye');
+            let lastHazard = hazardNames[hazardNames.length - 1];
+            setMessages(`Bummer, the last ${lastHazard} hazard gotcha. ba-bye.`);
             setButtonColor('error');
             setButtonText(':-(');
             setShowCards(false);
@@ -130,7 +131,7 @@ function App() {
                     numHazards={numHazards}
                 />
                 <div className="container-message">
-                    <MessageBoard message={message} />
+                    <MessageBoard message={message} hazardNames={hazardNames} numHazards={numHazards} />
                 </div>
                 <div className="container-short" style={{ marginBottom: '20px' }}>
                     <AnswerButtons
