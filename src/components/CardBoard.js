@@ -4,7 +4,7 @@ import HazardList from './HazardList';
 const CardBoard = ({ showCards, treasureNames, hazardNames }) => {
     return (
         showCards && (
-            <div className="container-short" style={{ verticalAlign: 'top' }}>
+            <div className="container-short" style={{ display: 'flex', alignItems: 'flex-start' }}>
                 <span style={{ paddingBottom: '100px' }}>
                     <div className="container-short">[Treasures]</div>
                     <TreasureList treNames={treasureNames} />

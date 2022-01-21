@@ -5,11 +5,7 @@ import AnswerButtons from './components/AnswerButtons';
 import MessageBoard from './components/MessageBoard';
 import Cards from './components/Cards';
 import CardBoard from './components/CardBoard';
-import TreasureList from './components/TreasureList';
-import HazardList from './components/HazardList';
-import LeaderBoard from './components/LeaderBoard';
 const deck = shuffle();
-console.log(deck);
 
 function App() {
     const [showCards, setShowCards] = useState(false);
@@ -46,7 +42,7 @@ function App() {
             setButtonColor('warning');
             setButtonText(':-|');
         } else if (numHazards >= 2) {
-            setMessages('Bummer!  ba, bye');
+            setMessages('Bummer!  ba-bye');
             setButtonColor('error');
             setButtonText(':-(');
             setShowCards(false);
@@ -59,9 +55,7 @@ function App() {
 
     useEffect(() => {
         updateScoreboard();
-    }, [showCards]);
-
-    useEffect(() => {}, [score]);
+    }, [showCards, score]);
 
     const getNextCard = () => {
         let card = deck.pop();
