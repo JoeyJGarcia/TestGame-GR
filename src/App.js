@@ -81,9 +81,7 @@ function App() {
         const newId = currentScoreboard.length + 1;
         const newestScore = { name: playerName, score: playerScore, id: newId };
 
-        if (newestScore.name && newestScore.score && newestScore.id) {
-            await addScore(newestScore);
-        }
+        await addScore(newestScore);
 
         updateScoreboard();
         setScore(0);
@@ -108,7 +106,7 @@ function App() {
     const getScores = async () => {
         const response = await fetch('http://localhost:5001/leaderboard');
         const data = await response.json();
-
+        console.log('all scores: ', data);
         return data;
     };
 
