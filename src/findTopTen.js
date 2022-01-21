@@ -1,13 +1,22 @@
 const findTopTen = (scores) => {
-    scores.sort((A, B) => {
-        if (A.scores > B.scores) return -1;
-        if (A.scores < B.scores) return 1;
-        if (A.scores == B.scores) return 0;
-    });
+    const sorted = doSort(scores);
 
-    let sortedScores = (scores.length = 10);
-    console.log('Top ten: ', sortedScores);
-    return sortedScores;
+    if (sorted.length > 10) {
+        sorted.length = 10;
+    }
+    console.log('Top ten: ', sorted);
+
+    return sorted;
 };
 
-module.exports = { findTopTen };
+const doSort = (scores) => {
+    let sorted = scores.sort((A, B) => {
+        if (A.score > B.score) return -1;
+        if (A.score < B.score) return 1;
+        if (A.score === B.score) return 0;
+    });
+
+    return sorted;
+};
+
+export default findTopTen;

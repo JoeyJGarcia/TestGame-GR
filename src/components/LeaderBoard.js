@@ -1,15 +1,10 @@
 const LeaderBoard = ({ scoreboard, numHazards }) => {
-    console.log('scoreboard: ', scoreboard);
     let scores = scoreboard ? scoreboard.length : 0;
-    console.log('scores: ', scores);
 
     let topTen;
 
     if (scoreboard && scoreboard.length > 0) {
         topTen = [...JSON.parse(JSON.stringify(scoreboard))];
-        topTen.length = 10;
-
-        console.log('sboard: ', topTen);
     }
 
     return (

@@ -58,7 +58,7 @@ function App() {
     }, [numHazards, score]);
 
     useEffect(() => {
-        getScores();
+        updateScoreboard();
     }, [showCards]);
 
     useEffect(() => {}, [score]);
@@ -85,7 +85,10 @@ function App() {
         const currentScoreboard = getScores();
         const newId = currentScoreboard.length + 1;
         const newestScore = { name: playerName, score: playerScore, id: newId };
-        await addScore(newestScore);
+
+        if (newestScore.name && newestScore.score && newestScore.id) {
+            await addScore(newestScore);
+        }
 
         updateScoreboard();
         setScore(0);
@@ -111,14 +114,12 @@ function App() {
         const response = await fetch('http://localhost:5001/leaderboard');
         const data = await response.json();
 
-        console.log(data);
-        setScoreboard(data);
         return data;
     };
 
     const updateScoreboard = async () => {
         const topten = findTopTen(await getScores());
-        console.log('topten: ', topten);
+
         setScoreboard(topten);
     };
 
